@@ -1,0 +1,26 @@
+[
+    {
+		"Id":1,
+        "Name": "Sminka"
+		
+    },
+    {
+        "Id":2,
+        "Name": "Nega kose"
+    },
+    {
+        "Id":3,
+        "Name": "Parfemi"
+    },
+	{
+        "Id":4,
+        "Name": "Nega koze"
+    },
+	{
+        "Id":5,
+        "Name": "Proizvodi za telo"
+    }
+	
+	
+	
+]

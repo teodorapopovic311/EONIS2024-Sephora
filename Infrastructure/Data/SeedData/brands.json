@@ -1,0 +1,71 @@
+[
+    {
+		"Id":1,
+        "Name": "Rare Beauty"
+		
+    },
+    {
+        "Id":2,
+        "Name": "Giorgio Armani Beauty"
+    },
+    {
+        "Id":3,
+        "Name": "Too Faced"
+    },
+	{
+        "Id":4,
+        "Name": "Fenty Beauty"
+    },
+	{
+        "Id":5,
+        "Name": "Tarte"
+    },
+	{
+        "Id":6,
+        "Name": "Urban Decay"
+    },
+	{
+        "Id":7,
+        "Name": "Benefit Cosmetics"
+    },
+	{
+        "Id":8,
+        "Name": "Make Up Forever"
+    },
+	{
+        "Id":9,
+        "Name": "NARS"
+    },
+	{
+        "Id":10,
+        "Name": "Sol de Janeiro"
+    },
+	{
+        "Id":11,
+        "Name": "Morrocanoil"
+    },
+	{
+        "Id":12,
+        "Name": "L'Occitane"
+    },
+	{
+        "Id":13,
+        "Name": "Tatcha"
+    },
+	{
+        "Id":14,
+        "Name": "Valentino"
+    },
+	{
+        "Id":15,
+        "Name": "Carolina Herrera"
+    },
+	{
+        "Id":16,
+        "Name": "Dior"
+    }
+	
+	
+	
+	
+]

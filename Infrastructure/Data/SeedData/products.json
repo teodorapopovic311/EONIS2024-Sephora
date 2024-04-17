@@ -1,0 +1,183 @@
+[
+    {
+		
+        "Name": "Soft Pinch Tinted Lip Oil",
+		"Description": "Ulje za hidrataciju usana",
+		"Price": 2140,
+		"ProductBrandId": 1,
+		"ProductTypeId": 1,
+		"Available": 12,
+		"ImageUrl": "images/rare-lipoil.png"
+		
+		
+    },
+    {
+        "Name": "Luminous Silk Foundation",
+		"Description": "Tečni puder za prirodan sjaj",
+		"Price": 5600,
+		"ProductBrandId": 2,
+		"ProductTypeId": 1,
+		"Available": 8,
+		"ImageUrl": "images/luminoussilkfoundation.png"
+    },
+    {
+        "Name": "Better Than Sex Mascara",
+		"Description": "Maskara za volumen trepavica",
+		"Price": 2800,
+		"ProductBrandId": 3,
+		"ProductTypeId": 1,
+		"Available": 15,
+		"ImageUrl": "images/betterthansx.png"
+    },
+	{
+        "Name": "Born This Way Foundation",
+		"Description": "Tečni puder za prirodan izgled",
+		"Price": 4500,
+		"ProductBrandId": 3,
+		"ProductTypeId": 1,
+		"Available": 10,
+		"ImageUrl": "images/bornthisway.png"
+    },
+	{
+		"Name": "Pro Filtr Soft Matte Longwear Foundation",
+		"Description": "Mat tečni puder dugotrajnog efekta",
+		"Price": 3600,
+		"ProductBrandId": 4,
+		"ProductTypeId": 1,
+		"Available": 20,
+		"ImageUrl": "images/pro-filtr.png"
+    },
+	{
+		"Name": "Tartelette In Bloom Clay Eyeshadow Palette",
+		"Description": "Paleta senki za oči sa 12 nijansi",
+		"Price": 6500,
+		"ProductBrandId": 5,
+		"ProductTypeId": 1,
+		"Available": 6,
+		"ImageUrl": "images/tartellete.png"
+    },
+	{
+		"Name": "Naked3 Eyeshadow Palette",
+		"Description": "Paleta senki za oči sa 12 nijansi u ružičasto-neutralnim tonovima",
+		"Price": 5700,
+		"ProductBrandId": 6,
+		"ProductTypeId": 1,
+		"Available": 9,
+		"ImageUrl": "images/naked3.png"
+    },
+	{
+		"Name": "Hoola Matte Bronzer",
+		"Description": "Mat bronzer za definisanje kontura lica",
+		"Price": 3200,
+		"ProductBrandId": 7,
+		"ProductTypeId": 1,
+		"Available": 18,
+		"ImageUrl": "images/hoolabronzer.png"
+    },
+	{
+		"Name": "Make Up For Ever Ultra HD Invisible Cover Foundation",
+		"Description": "Tečni puder sa visokom pokrivnom moći",
+		"Price": 5000,
+		"ProductBrandId": 8,
+		"ProductTypeId": 1,
+		"Available": 11,
+		"ImageUrl": "images/makeupfrvr.png"
+    },
+	{
+		"Name": "Radiant Creamy Concealer",
+		"Description": "Korektor sa srednjom pokrivnom moći i sjajnim finišem",
+		"Price": 3800,
+		"ProductBrandId": 9,
+		"ProductTypeId": 1,
+		"Available": 14,
+		"ImageUrl": "images/narscnc.png"
+    },
+	{
+		"Name": "Brazilian Bum Bum Cream",
+		"Description": "Krema za telo koja hidrira i zateže kožu, sa divnim mirisom pistaca i vanile.",
+		"Price": 4500,
+		"ProductBrandId": 10,
+		"ProductTypeId": 4,
+		"Available": 20,
+		"ImageUrl": "images/bumbumcream.png"
+	},
+	{
+		"Name": "Valentino Donna Born in Roma",
+		"Description": "Elegantni i senzualni parfem sa cvetnim i drvenastim notama, inspirisan Rimom.",
+		"Price": 7500,
+		"ProductBrandId": 14,
+		"ProductTypeId": 3,
+		"Available": 10,
+		"ImageUrl": "images/donna.png"
+	},
+	{
+		"Name": "Moroccan Oil Extra Volume Shampoo",
+		"Description": "Šampon za kosu koji pruža dodatni volumen i sjaj, obogaćen arganovim uljem.",
+		"Price": 2800,
+		"ProductBrandId": 11,
+		"ProductTypeId": 2,
+		"Available": 15,
+		"ImageUrl": "images/extravolumeshampoo.png"
+	},
+	{
+		"Name": "Good Girl",
+		"Description": "Senzualni parfem sa orijentalno-cvetnim notama.",
+		"Price": 8900,
+		"ProductBrandId": 15,
+		"ProductTypeId": 3,
+		"Available": 12,
+		"ImageUrl": "images/goodgirl.png"
+	},
+	{
+		"Name": "Moroccan Oil Hydration Mask",
+		"Description": "Hidratantna maska za kosu sa arganovim uljem, za intenzivnu negu i hidrataciju.",
+		"Price": 3200,
+		"ProductBrandId": 11,
+		"ProductTypeId": 2,
+		"Available": 18,
+		"ImageUrl": "images/hydrationmask.png"
+	},
+	{
+		"Name": "Miss Dior",
+		"Description": "Očaravajući parfem sa cvetnim i voćnim notama",
+		"Price": 8500,
+		"ProductBrandId": 16,
+		"ProductTypeId": 3,
+		"Available": 10,
+		"ImageUrl": "images/missdior.png"
+		
+	},
+	{
+		"Name": "L'Occitane Shower Oil",
+		"Description": "Ulje za tuširanje koje nudi bogatu hidrataciju i nežno čisti kožu, ostavljajući je mekom i glatkom.",
+		"Price": 2900,
+		"ProductBrandId": 12,
+		"ProductTypeId": 5,
+		"Available": 15,
+		"ImageUrl": "images/showeroil.png"
+	},
+	{
+		"Name": "The Water Cream",
+		"Description": "Hidratantna krema sa laganim, vodenastim teksturom koja dubinski hidrira kožu, pružajući joj svežinu i sjaj.",
+		"Price": 6700,
+		"ProductBrandId": 13,
+		"ProductTypeId": 4,
+		"Available": 20,
+		"ImageUrl": "images/thewatercream.png"
+	}
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+]
