@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "ShortName": "Brza Posta",
+    "Description": "Najkrace vreme dostave",
+    "DeliveryTime": "1-2 dana",
+    "Price": 700
+  },
+  {
+    "Id": 2,
+    "ShortName": "Regularna",
+    "Description": "Vreme dostave do 5 dana",
+    "DeliveryTime": "2-5 dana",
+    "Price": 550
+  },
+  {
+    "Id": 3,
+    "ShortName": "Sporija",
+    "Description": "Sporije vreme dostave, ali niza cena dostave",
+    "DeliveryTime": "5-10 dana",
+    "Price": 290
+  },
+  {
+    "Id": 4,
+    "ShortName": "Besplatna",
+    "Description": "Bez troskova dostave",
+    "DeliveryTime": "1-2 nedelje",
+    "Price": 0
+  }
+]
