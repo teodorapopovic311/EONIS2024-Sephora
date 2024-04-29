@@ -17,6 +17,10 @@ namespace Core.Interfaces
 
         Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync();
 
+        Task<IReadOnlyList<Order>> ListAllOrdersAsync();
+
+        void AddDeliveryMethod(int deliveryMethod);
+
 
     }
 }

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace API.Controllers
 {
     public class AccountController : BaseApiController
@@ -24,13 +25,16 @@ namespace API.Controllers
         private readonly ITokenService _tokenService;
 
         private readonly IMapper _mapper;
+
+        private readonly RoleManager<IdentityRole> _roleManager;
         public AccountController(UserManager<AppUser> userManager, 
-            SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper )
+            SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, RoleManager<IdentityRole> roleManager )
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _tokenService = tokenService;
             _mapper = mapper;
+            _roleManager = roleManager;
 
         }
 
@@ -45,7 +49,8 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                
             };
         }
 
@@ -97,11 +102,14 @@ namespace API.Controllers
             {
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                
 
             };
 
         }
+
+       
         
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
@@ -116,6 +124,7 @@ namespace API.Controllers
                 DisplayName = registerDto.DisplayName,
                 Email = registerDto.Email,
                 UserName = registerDto.Email,
+                Role = registerDto.Role
 
             };
 
@@ -123,11 +132,13 @@ namespace API.Controllers
 
             if(!result.Succeeded) return BadRequest(new ApiResponse(400));
 
+
             return new UserDto
             {
                 DisplayName = user.DisplayName,
                 Token = _tokenService.CreateToken(user),
-                Email = user.Email
+                Email = user.Email,
+                Role = user.Role
             };
         }
 

@@ -16,6 +16,11 @@ namespace Infrastructure.Data
             _context = context;
         }
 
+        public void Add(Products product)
+        {
+            _context.Set<Products>().Add(product);
+        }
+
         public async Task<IReadOnlyList<ProductBrand>> GetProductBrandsAsync()
         {
             return await _context.ProductBrands.ToListAsync();
@@ -42,6 +47,18 @@ namespace Infrastructure.Data
         public async Task<IReadOnlyList<ProductType>> GetProductTypesAsync()
         {
             return await _context.ProductTypes.ToListAsync();
+        }
+
+        public void Update(Products product)
+        {
+            _context.Set<Products>().Attach(product);
+            _context.Entry(product).State = EntityState.Modified;
+        
+        }
+
+        public void Delete(Products product)
+        {
+            _context.Set<Products>().Remove(product);
         }
     }
 }

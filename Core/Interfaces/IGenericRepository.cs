@@ -23,5 +23,7 @@ namespace Core.Interfaces
 
         void Delete(T entity);
 
+        Task<int> SaveChangesAsync();
+
     }
 }

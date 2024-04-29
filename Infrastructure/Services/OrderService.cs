@@ -20,6 +20,13 @@ namespace Infrastructure.Services
             _basketRepo = basketRepo;
         }
 
+        
+        public void AddDeliveryMethod(DeliveryMethod deliveryMethod)
+        {
+             _unitOfWork.Repository<DeliveryMethod>().Add(deliveryMethod);
+        
+        }
+
         public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
         {
             var basket = await _basketRepo.GetBasketAsync(basketId);
@@ -71,6 +78,11 @@ namespace Infrastructure.Services
         {
             var spec = new OrdersWithItemsAndOrderingSpecification(buyerEmail);
             return await _unitOfWork.Repository<Order>().ListAsync(spec);
+        }
+
+        public async Task<IReadOnlyList<Order>> ListAllOrdersAsync()
+        {
+            return await _unitOfWork.Repository<Order>().ListAllAsync();
         }
     }
 }

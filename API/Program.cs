@@ -1,4 +1,5 @@
 
+using System.Text.Json.Serialization;
 using API.Errors;
 using API.Extensions;
 using API.Middleware;
@@ -18,6 +19,19 @@ builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
+builder.Services.AddIdentity<AppUser, IdentityRole>()
+        .AddEntityFrameworkStores<AppIdentityDbContext>()
+        .AddDefaultTokenProviders();
+
+builder.Services.AddScoped<RoleManager<IdentityRole>>();
+builder.Services.AddControllersWithViews()
+        .AddNewtonsoftJson();
+builder.Services.AddControllers()
+        .AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
+
 
 
 var app = builder.Build();

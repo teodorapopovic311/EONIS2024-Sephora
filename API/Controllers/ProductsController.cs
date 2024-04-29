@@ -8,6 +8,7 @@ using Core.Entities;
 using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -75,6 +76,51 @@ namespace API.Controllers
         {
             return Ok(await _productTypeRepo.ListAllAsync());
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<ActionResult<Products>> AddProduct(Products product)
+        {
+            _productsRepo.Add(product);
+            await _productsRepo.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, Products product)
+        {
+            if (id != product.Id)
+            {
+                return BadRequest();
+            }
+
+            _productsRepo.Update(product);
+            await _productsRepo.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _productsRepo.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            _productsRepo.Delete(product);
+            await _productsRepo.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+
+
 
     }
 }
