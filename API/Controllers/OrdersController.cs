@@ -41,7 +41,7 @@ namespace API.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrders()
         {
@@ -51,7 +51,7 @@ namespace API.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet("ordersfotu")]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrdersForUser()
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();

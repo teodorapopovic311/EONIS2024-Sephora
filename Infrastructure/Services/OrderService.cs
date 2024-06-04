@@ -27,6 +27,11 @@ namespace Infrastructure.Services
         
         }
 
+        public void AddDeliveryMethod(int deliveryMethod)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string basketId, Address shippingAddress)
         {
             var basket = await _basketRepo.GetBasketAsync(basketId);

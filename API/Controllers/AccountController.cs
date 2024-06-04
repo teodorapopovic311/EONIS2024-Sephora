@@ -103,7 +103,7 @@ namespace API.Controllers
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
                 DisplayName = user.DisplayName,
-                
+                Role = user.Role
 
             };
 
