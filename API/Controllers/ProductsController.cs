@@ -9,6 +9,7 @@ using Core.Interfaces;
 using Core.Specifications;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,6 +34,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<Pagination<IReadOnlyList<ProductToReturnDto>>>> GetProducts(
             [FromQuery]ProductSpecParams productParams) 
         {
@@ -55,6 +57,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<ProductToReturnDto>> GetProduct(int id) 
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id); 
@@ -66,12 +69,14 @@ namespace API.Controllers
         }
 
         [HttpGet("brands")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
             return Ok(await _productBrandRepo.ListAllAsync());
         }
 
          [HttpGet("types")]
+         [EnableCors("CorsPolicy")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
             return Ok(await _productTypeRepo.ListAllAsync());
@@ -79,6 +84,7 @@ namespace API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<Products>> AddProduct(Products product)
         {
             _productsRepo.Add(product);
@@ -89,6 +95,7 @@ namespace API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
+        [EnableCors("CorsPolicy")]
         public async Task<IActionResult> UpdateProduct(int id, Products product)
         {
             if (id != product.Id)
@@ -104,6 +111,7 @@ namespace API.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
+        [EnableCors("CorsPolicy")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             var product = await _productsRepo.GetByIdAsync(id);

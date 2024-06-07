@@ -11,6 +11,7 @@ using AutoMapper;
 using Core.Entities.Identity;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,6 +41,7 @@ namespace API.Controllers
 
         [HttpGet]
         [Authorize]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             
@@ -55,6 +57,7 @@ namespace API.Controllers
         }
 
         [HttpGet("emailexists")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<bool>> CheckEmailExistsAsync([FromQuery] string email)
         {
             return await _userManager.FindByEmailAsync(email) != null;
@@ -62,6 +65,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet("address")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
             
@@ -74,6 +78,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpPut("address")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
             var user = await _userManager.FindUserByClaimsPrincipalWithAddress(HttpContext.User);
@@ -88,6 +93,7 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto) 
         {
             var user = await _userManager.FindByEmailAsync(loginDto.Email);
@@ -112,6 +118,7 @@ namespace API.Controllers
        
         
         [HttpPost("register")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             if(CheckEmailExistsAsync(registerDto.Email).Result.Value)

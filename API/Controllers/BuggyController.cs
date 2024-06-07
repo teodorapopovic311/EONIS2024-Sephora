@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Errors;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -21,12 +22,14 @@ namespace API.Controllers
 
         [HttpGet("testauth")]
         [Authorize]
+        [EnableCors("CorsPolicy")]
         public ActionResult<string> GetSecretText()
         {
             return "secret stuff";
         }
 
         [HttpGet("notfound")]
+        [EnableCors("CorsPolicy")]
 
         public ActionResult GetNotFoundRequest()
         {
@@ -40,6 +43,7 @@ namespace API.Controllers
         }
 
         [HttpGet("servererror")]
+        [EnableCors("CorsPolicy")]
 
         public ActionResult GetServerError()
         {
@@ -50,6 +54,7 @@ namespace API.Controllers
         }
 
         [HttpGet("badrequest")]
+        [EnableCors("CorsPolicy")]
 
         public ActionResult GetBadRequest()
         {

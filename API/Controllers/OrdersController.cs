@@ -10,11 +10,13 @@ using AutoMapper;
 using Core.Entities.OrderAggregate;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Authorize]
+   
     public class OrdersController : BaseApiController
     {
         private readonly IOrderService _orderService;
@@ -27,6 +29,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto) 
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
@@ -43,6 +46,7 @@ namespace API.Controllers
 
         [Authorize]
         [HttpGet]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrders()
         {
             var orders = await _orderService.ListAllOrdersAsync();
@@ -52,6 +56,7 @@ namespace API.Controllers
 
 
         [HttpGet("ordersfotu")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrdersForUser()
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
@@ -61,6 +66,7 @@ namespace API.Controllers
         } 
 
         [HttpGet("{id}")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<OrderToReturnDto>> GetOrderByIdForUser(int id)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
@@ -73,6 +79,7 @@ namespace API.Controllers
         }
 
         [HttpGet("deliveryMethods")]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
             return Ok(await _orderService.GetDeliveryMethodsAsync());

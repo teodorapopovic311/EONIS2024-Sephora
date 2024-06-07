@@ -6,6 +6,7 @@ using API.Dtos;
 using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -22,6 +23,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<CostumerBasket>> GetBasketById(string id)
         {
             var basket = await _basketRepository.GetBasketAsync(id);
@@ -30,6 +32,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [EnableCors("CorsPolicy")]
         public async Task<ActionResult<CostumerBasket>> UpdateBasket(CostumerBasketDto basket)
         {
             var costumerBasket = _mapper.Map<CostumerBasketDto,CostumerBasket>(basket);
@@ -39,6 +42,7 @@ namespace API.Controllers
         }
 
         [HttpDelete]
+        [EnableCors("CorsPolicy")]
         public async Task DeleteBasketAsync(string id)
         {
             await _basketRepository.DeleteBasketAsync(id);

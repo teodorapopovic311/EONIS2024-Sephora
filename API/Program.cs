@@ -16,6 +16,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200") 
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
@@ -34,6 +43,8 @@ builder.Services.AddControllers()
 
 
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -46,6 +57,8 @@ app.UseSwaggerDocumentation();
 
 
 app.UseStaticFiles();
+
+app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicy");
 
