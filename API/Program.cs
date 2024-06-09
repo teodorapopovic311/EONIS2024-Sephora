@@ -35,11 +35,15 @@ builder.Services.AddIdentity<AppUser, IdentityRole>()
 builder.Services.AddScoped<RoleManager<IdentityRole>>();
 builder.Services.AddControllersWithViews()
         .AddNewtonsoftJson();
+
+
 builder.Services.AddControllers()
         .AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         });
+
+    
 
 
 

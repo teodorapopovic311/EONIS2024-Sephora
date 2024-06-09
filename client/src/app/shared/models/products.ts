@@ -10,3 +10,5 @@
     available: number
     imageUrl: string
   }
+
+  export class Product implements Product {}

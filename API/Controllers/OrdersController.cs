@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [Authorize]
+    //[Authorize]
    
     public class OrdersController : BaseApiController
     {
@@ -44,7 +44,7 @@ namespace API.Controllers
 
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [EnableCors("CorsPolicy")]
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrders()
