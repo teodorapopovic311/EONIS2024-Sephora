@@ -23,12 +23,7 @@ namespace API.Extensions
 
             });
 
-            services.AddIdentityCore<AppUser> (opt => {
-                //mogu ovde dodati identity options
-            })
-            .AddEntityFrameworkStores<AppIdentityDbContext>()
-            .AddSignInManager<SignInManager<AppUser>>();
-
+           
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options => 
                 {
@@ -43,6 +38,14 @@ namespace API.Extensions
 
 
                 });
+
+
+            services.AddIdentityCore<AppUser> (opt => {
+                //mogu ovde dodati identity options
+            })
+            .AddEntityFrameworkStores<AppIdentityDbContext>()
+            .AddSignInManager<SignInManager<AppUser>>();
+
 
 
 

@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace API.Controllers
@@ -29,15 +30,37 @@ namespace API.Controllers
 
         private readonly RoleManager<IdentityRole> _roleManager;
         public AccountController(UserManager<AppUser> userManager, 
-            SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper, RoleManager<IdentityRole> roleManager )
+            SignInManager<AppUser> signInManager, ITokenService tokenService,IMapper mapper )
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _tokenService = tokenService;
             _mapper = mapper;
-            _roleManager = roleManager;
 
         }
+
+
+        [HttpGet("all")]
+        [Authorize(Roles = "Admin")]
+        [EnableCors("CorsPolicy")]
+        public async Task<ActionResult<List<UserDto>>> GetUsers()
+        {
+    
+            var users = await _userManager.Users.ToListAsync();
+
+            // Map AppUser entities to UserDto (you might need AutoMapper or a manual mapping here)
+            var userDtos = users.Select(user => new UserDto
+            {
+                Email = user.Email,
+                DisplayName = user.DisplayName,
+                Role = user.Role,
+        
+            }).ToList();
+
+            return Ok(userDtos);
+}
+
+
 
         [HttpGet]
         [Authorize]

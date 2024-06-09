@@ -28,6 +28,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
+
+/*
 builder.Services.AddIdentity<AppUser, IdentityRole>()
         .AddEntityFrameworkStores<AppIdentityDbContext>()
         .AddDefaultTokenProviders();
@@ -43,7 +45,7 @@ builder.Services.AddControllers()
             options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         });
 
-    
+ */   
 
 
 
