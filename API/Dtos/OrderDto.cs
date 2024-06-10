@@ -11,6 +11,6 @@ namespace API.Dtos
 
         public int DeliveryMethodId { get; set; }
 
-        public AddressDto ShipTpAddress { get; set; }
+        public AddressDto ShipToAddress { get; set; }
     }
 }

@@ -7,12 +7,12 @@ export interface Basket {
   
   export interface BasketItem {
     id: number
-    productName: string
-    price: number
-    quantity: number
-    imageUrl: string
-    brand: string
-    productType: string
+    ProductName: string
+    Price: number
+    Quantity: number
+    ImageUrl: string
+    Brand: string
+    ProductType: string
   }
 
   export class Basket implements Basket {

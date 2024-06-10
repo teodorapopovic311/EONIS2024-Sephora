@@ -35,8 +35,8 @@ export class ProductDetailsComponent implements OnInit {
           next: basket => {
             const item = basket?.items.find(x => x.id === +id);
             if (item) {
-              this.quantity = item.quantity;
-              this.quantityInBasket = item.quantity;
+              this.quantity = item.Quantity;
+              this.quantityInBasket = item.Quantity;
             }
           }
         })

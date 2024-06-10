@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    //[Authorize]
+    [Authorize]
    
     public class OrdersController : BaseApiController
     {
@@ -34,7 +34,7 @@ namespace API.Controllers
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
 
-            var address = _mapper.Map<AddressDto, Address>(orderDto.ShipTpAddress);
+            var address = _mapper.Map<AddressDto, Address>(orderDto.ShipToAddress);
 
             var order = await _orderService.CreateOrderAsync(email, orderDto.DeliveryMethodId, orderDto.BasketId, address);
 
