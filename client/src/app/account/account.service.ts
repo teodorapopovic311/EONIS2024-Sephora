@@ -27,7 +27,7 @@ export class AccountService {
     return this.http.get<User>(this.baseUrl + 'account', {headers}).pipe(
       map(user => {
         if (user) {
-          localStorage.setItem('token', user.Token);
+          localStorage.setItem('token', user.token);
           this.currentUserSource.next(user);
           return user;
         } else {
@@ -40,7 +40,7 @@ export class AccountService {
   login(values: any) {
     return this.http.post<User>(this.baseUrl + 'account/login', values).pipe(
       map(user => {
-        localStorage.setItem('token', user.Token);
+        localStorage.setItem('token', user.token);
         this.currentUserSource.next(user);
       })
     )
@@ -49,7 +49,7 @@ export class AccountService {
   register(values: any) {
     return this.http.post<User>(this.baseUrl + 'account/register', values).pipe(
       map(user => {
-        localStorage.setItem('token', user.Token);
+        localStorage.setItem('token', user.token);
         this.currentUserSource.next(user);
       })
     )

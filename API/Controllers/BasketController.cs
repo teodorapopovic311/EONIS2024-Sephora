@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Dtos;
 using AutoMapper;
 using Core.Entities;
@@ -17,9 +13,8 @@ namespace API.Controllers
         private readonly IMapper _mapper;
         public BasketController(IBasketRepository basketRepository, IMapper mapper)
         {
-            _basketRepository = basketRepository;
             _mapper = mapper;
-
+            _basketRepository = basketRepository;
         }
 
         [HttpGet]
@@ -35,8 +30,9 @@ namespace API.Controllers
         [EnableCors("CorsPolicy")]
         public async Task<ActionResult<CostumerBasket>> UpdateBasket(CostumerBasketDto basket)
         {
-            var costumerBasket = _mapper.Map<CostumerBasketDto,CostumerBasket>(basket);
-            var updatedBasket = await _basketRepository.UpdateBasketAsync(costumerBasket);
+            var customerBasket = _mapper.Map<CostumerBasket>(basket);
+
+            var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
 
             return Ok(updatedBasket);
         }
@@ -47,6 +43,5 @@ namespace API.Controllers
         {
             await _basketRepository.DeleteBasketAsync(id);
         }
-
     }
 }

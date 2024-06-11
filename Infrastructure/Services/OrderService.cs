@@ -48,18 +48,32 @@ namespace Infrastructure.Services
             var deliveryMethod = await _unitOfWork.Repository<DeliveryMethod>().GetByIdAsync(deliveryMethodId);
 
             var subtotal = items.Sum(item => item.Price * item.Quantity);
+
+            //da li postoji
+            var spec = new OrderByPaymentIntentId(basket.PaymentIntentId);
+            var order = await _unitOfWork.Repository<Order>().GetEntityWithSpec(spec);
            
-            //kreiranje porudzbine
-            var order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal);
-            _unitOfWork.Repository<Order>().Add(order);
+            if ( order != null)
+            {
+                order.ShipToAddress = shippingAddress;
+                order.DeliveryMethod = deliveryMethod;
+                order.Subtotal = subtotal;
+                _unitOfWork.Repository<Order>().Update(order);
+            }
+            else {
+                    order = new Order(items, buyerEmail, shippingAddress, deliveryMethod, subtotal, basket.PaymentIntentId);
+                _unitOfWork.Repository<Order>().Add(order);
+            }
+
+            
+        
 
             //cuvanje
             var result = await _unitOfWork.Complete();
 
             if(result <= 0) return null;
 
-            //brisanje korpe
-            await _basketRepo.DeleteBasketAsync(basketId);
+            
 
             return order;
 

@@ -1,7 +1,7 @@
 export interface DeliveryMethod {
-    ShortName: string;
-    DeliveryTime: string;
-    Description: string;
-    Price: number;
-    Id: number;
+    shortName: string;
+    deliveryTime: string;
+    description: string;
+    price: number;
+    id: number;
 }

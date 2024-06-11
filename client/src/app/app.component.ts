@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   loadBasket() {
     const basketId = localStorage.getItem('basket_id');
     if (basketId) this.basketService.getBasket(basketId);
+    console.log(basketId);
   }
 
   loadCurrentUser() {

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/shared/models/products';
-import { ShopService } from '../shop.service';
-import { BreadcrumbService } from 'xng-breadcrumb';
-import { BasketService } from 'src/app/basket/basket.service';
 import { take } from 'rxjs';
+import { BasketService } from 'src/app/basket/basket.service';
+import { Product } from 'src/app/shared/models/products';
+import { BreadcrumbService } from 'xng-breadcrumb';
+import { ShopService } from '../shop.service';
 
 @Component({
   selector: 'app-product-details',
@@ -35,8 +35,8 @@ export class ProductDetailsComponent implements OnInit {
           next: basket => {
             const item = basket?.items.find(x => x.id === +id);
             if (item) {
-              this.quantity = item.Quantity;
-              this.quantityInBasket = item.Quantity;
+              this.quantity = item.quantity;
+              this.quantityInBasket = item.quantity;
             }
           }
         })

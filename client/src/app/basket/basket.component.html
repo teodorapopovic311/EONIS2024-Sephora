@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <div *ngIf="(basketService.basketSource$ | async) === null">
-        <p>Korpa je prazna</p>
+        <p>Vaša korpa je prazna</p>
     </div>
 
     <ng-container *ngIf="(basketService.basketSource$ | async) as basket">
@@ -9,7 +9,7 @@
                 <app-basket-summary
                     (addItem)="incrementQuantity($event)"
                     (removeItem)="removeItem($event)"
-                ></app-basket-summary>           
+                ></app-basket-summary>
             </div>
 
             <div class="row">

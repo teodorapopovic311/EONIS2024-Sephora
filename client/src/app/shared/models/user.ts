@@ -1,22 +1,22 @@
 export interface User {
 
-        Email: string;
-        DisplayName: string;
-        Token: string;
-        Role: string
+        email: string;
+        displayName: string;
+        token: string;
+        role: string
         
 }
 
 export interface Address {
 
-        FirstName: string;
+        firstName: string;
 
-        LastName: string;
+        lastName: string;
 
-        Street: string;
+        street: string;
 
-        City: string;
+        city: string;
 
-        PhoneNumber: string;
+        phoneNumber: string;
 
 } 

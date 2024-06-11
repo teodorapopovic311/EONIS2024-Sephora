@@ -19,6 +19,6 @@ export class BasketSummaryComponent {
   }
 
   removeBasketItem(id: number, quantity = 1) {
-    this.removeItem.emit({id, quantity})
+    this.removeItem.emit({id,quantity})
   }
 }

@@ -2,16 +2,16 @@
     <div class="row" formGroupName="deliveryForm">
         <div class="col-6 form-group" *ngFor="let method of deliveryMethods">
             <input type="radio"
-                id={{method.Id}}
-                value={{method.Id}}
+                id={{method.id}}
+                value={{method.id}}
                 formControlName="deliveryMethod"
                 class="form-check-input"
                 (click)="setShippingPrice(method)"
             >
-            <label for="{{method.Id}}" class="form-check-label ms-2 mb-3">
-                <strong>{{method.ShortName}} - {{method.Price | currency: 'RSD':'symbol':'1.0-0'}}</strong>
+            <label for="{{method.id}}" class="form-check-label ms-2 mb-3">
+                <strong>{{method.shortName}} - {{method.price | currency: 'RSD':'symbol':'1.0-0'}}</strong>
                 <br />
-                <span class="label-description">{{method.Description}}</span>
+                <span class="label-description">{{method.description}}</span>
             </label>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <button class="btn btn-outline-primary" cdkStepperPrevious>
         <i class="fa fa-angle-left"></i> Nazad na adresu
     </button>
-    <button class="btn btn-primary" cdkStepperNext>
+    <button [disabled]="checkoutForm?.get('deliveryForm')?.invalid" class="btn btn-primary" cdkStepperNext>
         Nastavi na pregled porudžbine <i class="fa fa-angle-right"></i> 
     </button>
 </div>
