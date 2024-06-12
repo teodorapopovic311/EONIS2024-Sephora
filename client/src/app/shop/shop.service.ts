@@ -10,7 +10,7 @@ import { Type } from '../shared/models/type';
   providedIn: 'root'
 })
 export class ShopService {
-  baseUrl = 'https://localhost:5001/api/';
+  baseUrl = 'http://localhost:5001/api/';
 
   constructor(private http: HttpClient) { }
 

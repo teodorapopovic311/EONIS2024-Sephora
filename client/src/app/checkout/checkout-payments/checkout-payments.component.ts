@@ -34,7 +34,7 @@ export class CheckoutPaymentComponent implements OnInit {
       private toastr: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
-    loadStripe('pk_test_2PZ84pFKu2MddUgGDG521v9m00SlLWySIR').then(stripe => {
+    loadStripe('pk_test_51PPtRzRxgQEe28ERMrPMMM4MJpKypZjK4Ts6nNwH4QxVElhYpL261SdKBmp6W7OCWTSoblKYVXj8k8iHy1NeZ6LH00Z1aRQfRs').then(stripe => {
       this.stripe = stripe;
       const elements = stripe?.elements();
       if (elements) {
@@ -96,7 +96,7 @@ export class CheckoutPaymentComponent implements OnInit {
 
   private async confirmPaymentWithStripe(basket: Basket | null) {
     if (!basket) throw new Error('Basket is null');
-    const result = this.stripe?.confirmCardPayment(basket.ClientSecret!, {
+    const result = this.stripe?.confirmCardPayment(basket.clientSecret!, {
       payment_method: {
         card: this.cardNumber!,
         billing_details: {
@@ -119,9 +119,9 @@ export class CheckoutPaymentComponent implements OnInit {
     const shipToAddress = this.checkoutForm?.get('addressForm')?.value as Address;
     if (!deliveryMethodId || !shipToAddress) throw new Error('Problem with basket');
     return {
-      BasketId: basket.id,
-      DeliveryMethodId: deliveryMethodId,
-      ShipToAddress: shipToAddress
+      basketId: basket.id,
+      deliveryMethodId: deliveryMethodId,
+      shipToAddress: shipToAddress
     }
   }
 }

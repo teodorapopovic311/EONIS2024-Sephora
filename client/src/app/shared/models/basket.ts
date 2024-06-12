@@ -13,7 +13,7 @@ import * as cuid from "cuid"
   export interface Basket {
     id: string
     items: BasketItem[]
-    ClientSecret?: string;
+    clientSecret?: string;
     PaymentIntentId?: string,
     deliveryMethodId?: number;
     shippingPrice: number;

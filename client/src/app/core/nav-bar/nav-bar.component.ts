@@ -10,12 +10,9 @@ import { AccountService } from 'src/app/account/account.service';
 })
 export class NavBarComponent {
 
-  Items: BasketItem[];
-  constructor(public basketService: BasketService, public accountService: AccountService) {
-    this.Items = [];
-  }
+  constructor(public basketService: BasketService, public accountService: AccountService) {}
 
-  getCount() {
-    return this.Items.reduce((sum, Item) => sum + Item.quantity, 0);
+  getCount(items: BasketItem[]) {
+    return items.reduce((sum, item) => sum + item.quantity, 0);
   }
 }

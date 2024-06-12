@@ -8,15 +8,19 @@ using Stripe;
 
 namespace API.Controllers
 {
+    [ApiController]
+    [Route("api/payments")]
     public class PaymentsController : BaseApiController
     {
-        private const string WhSecret = "whsec_a3e8b1de0f38a80502789280c9428180b37f05564b7e9a470c25058d1e99afae";
+        private readonly string _whSecret;
         private readonly IPaymentService _paymentService;
         private readonly ILogger<PaymentsController> _logger;
-        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger)
+        public PaymentsController(IPaymentService paymentService, ILogger<PaymentsController> logger,
+        IConfiguration config)
         {
             _logger = logger;
             _paymentService = paymentService;
+            _whSecret = config.GetSection("StripeSettings:WhSecret").Value;
         }
 
         [Authorize]
@@ -30,13 +34,13 @@ namespace API.Controllers
             return basket;
         }
 
-        [HttpPost("webhook")]
+       [HttpPost("webhook")]
         public async Task<ActionResult> StripeWebhook()
         {
             var json = await new StreamReader(Request.Body).ReadToEndAsync();
 
             var stripeEvent = EventUtility.ConstructEvent(json,
-                Request.Headers["Stripe-Signature"], WhSecret);
+                Request.Headers["Stripe-Signature"], _whSecret, throwOnApiVersionMismatch: false);
 
             PaymentIntent intent;
             Order order;
@@ -59,5 +63,6 @@ namespace API.Controllers
 
             return new EmptyResult();
         }
+        
     }
 }

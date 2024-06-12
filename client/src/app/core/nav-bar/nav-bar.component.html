@@ -8,13 +8,12 @@
             [routerLinkActiveOptions]="{exact: true}"
         >Home</a>
         <a class="p-2" routerLink="/shop" routerLinkActive="active">Shop</a>
-        <a class="p-2" routerLink="/test-error" routerLinkActive="active">Errors</a>
     </nav>
     <div class="d-flex align-items-center">
         <a routerLink="/basket" class="position-relative">
             <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>
             <div *ngIf="(basketService.basketSource$ | async) as basket" class="cart-no">
-                {{getCount()}}
+                {{getCount(basket.items)}}
             </div>
         </a>
         <ng-container *ngIf="(accountService.currentUser$ | async) === null">
