@@ -20,6 +20,7 @@ export class RegisterComponent {
     displayName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email], [this.validateEmailNotTaken()]],
     password: ['', [Validators.required, Validators.pattern(this.complexPassword)]],
+    
   })  
 
   onSubmit() {

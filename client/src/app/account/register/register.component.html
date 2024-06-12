@@ -8,6 +8,7 @@
         <app-text-input [formControl]="registerForm.controls['displayName']" [label]="'Korisničko ime'"></app-text-input>
         <app-text-input [formControl]="registerForm.controls['email']" [label]="'Email adresa'"></app-text-input>
         <app-text-input [formControl]="registerForm.controls['password']" [label]="'Lozinka'" [type]="'password'"></app-text-input>
+        
 
         <ul class="text-danger list-unstyled" *ngIf="errors">
           <li *ngFor="let error of errors">

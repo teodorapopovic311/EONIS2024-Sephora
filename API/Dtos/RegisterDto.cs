@@ -20,7 +20,7 @@ namespace API.Dtos
         "(?=^.{6,10}$)(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&amp;*()_+}{&quot;:;'?/&gt;.&lt;,])(?!.*\\s).*$", ErrorMessage = "Password must have 1 Uppercase, 1 Lowercase, 1 number, 1 non alphanumeric and minimum 6 characters")]
         public string Password {get; set;}
 
-        public string Role { get; set; }
+        public string Role {get; set;} 
 
         
     }
