@@ -101,7 +101,34 @@ namespace Infrastructure.Services
 
         public async Task<IReadOnlyList<Order>> ListAllOrdersAsync()
         {
-            return await _unitOfWork.Repository<Order>().ListAllAsync();
+            var spec = new OrdersWithItemsAndOrderingSpecification();
+            return await _unitOfWork.Repository<Order>().ListAsync(spec);
         }
+
+        public async Task<Order> DeleteOrderByIdAsync(int id)
+
+        {
+
+            var order = await _unitOfWork.Repository<Order>().GetByIdAsync(id);
+
+            if (order == null)
+
+            {
+
+                return null;
+
+            }
+
+            _unitOfWork.Repository<Order>().Delete(order);
+
+            var result = await _unitOfWork.Complete();
+
+            if (result <= 0) return null;
+
+            return order;
+
+        }
+
+
     }
 }

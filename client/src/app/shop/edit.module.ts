@@ -7,23 +7,21 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { RouterModule } from '@angular/router';
 import { ShopRoutingModule } from './shop-routing.module';
 import { EditProductComponent } from './edit-product/edit-product.component';
-import { AddProductComponent } from './add-product/add-product.component';
+import { EditProductRoutingModule } from './edit-product-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    ShopComponent,
-    ProductItemComponent,
-    ProductDetailsComponent,
-    AddProductComponent
+    EditProductComponent,
     
     
   ],
   imports: [
     CommonModule,
     SharedModule,
-    ShopRoutingModule
+    ShopRoutingModule,
+    EditProductRoutingModule
     
   ],
   exports: [
@@ -31,4 +29,4 @@ import { AddProductComponent } from './add-product/add-product.component';
   ]
 
 })
-export class ShopModule { }
+export class EditModule { }

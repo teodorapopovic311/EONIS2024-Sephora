@@ -21,6 +21,8 @@ namespace Core.Interfaces
 
         void AddDeliveryMethod(int deliveryMethod);
 
+        Task<Order> DeleteOrderByIdAsync(int id);
+
 
     }
 }

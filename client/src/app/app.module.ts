@@ -13,10 +13,12 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { OrderDetailedComponent } from './order-detailed/order-detailed.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     OrderDetailedComponent
+    
     
   ],
   imports: [
@@ -25,7 +27,8 @@ import { OrderDetailedComponent } from './order-detailed/order-detailed.componen
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    HomeModule
+    HomeModule,
+   
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

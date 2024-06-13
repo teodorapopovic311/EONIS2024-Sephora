@@ -26,5 +26,15 @@ namespace Core.Specifications
 
               AddInclude(o => o.DeliveryMethod);
         }
+
+        public OrdersWithItemsAndOrderingSpecification() : base(o => o.Status == OrderStatus.PaymentReceived)
+        {
+            AddInclude(o => o.OrderItems);
+ 
+            AddInclude(o => o.DeliveryMethod);
+ 
+            AddOrderByDescending(o => o.OrderDate);
+        }
+
     }
 }

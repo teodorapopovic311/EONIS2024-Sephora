@@ -114,6 +114,7 @@ namespace API.Controllers
         [EnableCors("CorsPolicy")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
+            Console.WriteLine("Deleting product with ID: " + id);
             var product = await _productsRepo.GetByIdAsync(id);
             if (product == null)
             {

@@ -21,10 +21,13 @@ namespace API.Controllers
     {
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
+
+      
         public OrdersController(IOrderService orderService, IMapper mapper)
         {
             _mapper = mapper;
             _orderService = orderService;
+            
 
         }
 
@@ -50,8 +53,9 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrders()
         {
             var orders = await _orderService.ListAllOrdersAsync();
-
+        
             return Ok(_mapper.Map<IReadOnlyList<OrderToReturnDto>>(orders));
+            
         }
 
 
@@ -84,6 +88,20 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethods()
         {
             return Ok(await _orderService.GetDeliveryMethodsAsync());
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
+        [EnableCors("CorsPolicy")]
+        public async Task<ActionResult> DeleteOrderByIdAsync(int id)
+        {
+            //var order = await _orderService.GetOrderByIdAsync(id, User.RetrieveEmailFromPrincipal());
+ 
+            //if (order == null) return NotFound(new ApiResponse(404));
+ 
+            await _orderService.DeleteOrderByIdAsync(id);
+ 
+            return NoContent();
         }
 
      
